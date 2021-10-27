@@ -21,7 +21,7 @@ class Stepper:
     while time.time() < endTime:
       pass
   
-  def halfstep(self):
+  def halfstep(self,dir):
     # dir = +/- 1 for CCW or CW
     Stepper.state += dir
     if Stepper.state>7: Stepper.state = 0
