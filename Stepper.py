@@ -46,7 +46,7 @@ class Stepper:
     # turn the motor until the photores
     # lower number means brighter, ambient light is higher value
     photores = self.myPCF8591.read(0)
-    while photores < 150: 
+    while photores > 150: 
       self.turnSteps(1,1)
       print(photores) 
     
