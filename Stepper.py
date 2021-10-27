@@ -36,8 +36,11 @@ class Stepper:
     angle = self.myPCF8591.read(0)
     print(angle)
 
-  # def goAngle(self, angle):
+  def goAngle(self, angle,dir):
     # move to a specified angle
+    # 8 steps/half step*8 half steps/motor rev *64 motor rev/shaft revolution
+    steps = 4096/angle
+    self.turnSteps(steps,dir)
   # def zero(self):
     # turn the motor until the photores
   
