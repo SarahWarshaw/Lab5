@@ -1,0 +1,16 @@
+<html>
+<head>
+<title>Stepper Control</title>
+</head>
+<body>
+<div style="width:600px;background:#71F282;border:1px;text-align:center">
+<br>
+<h1>Choose an Angle or zero the motor</h1>
+<form action = "stepper_control.py" method = "POST">
+  <input type ="range" name = "slider" min = "0" max="360" value="0"><br>
+  <input type="submit" value = "Submit angle"><br><br>
+  <input type="submit" value = "Zero the motor">
+</form>
+</div>
+</body>
+</html>
