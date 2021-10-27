@@ -21,7 +21,7 @@ class Stepper:
     while time.time() < endTime:
       pass
   
-  def __halfstep(self):
+  def halfstep(self):
     # dir = +/- 1 for CCW or CW
     Stepper.state += dir
     if Stepper.state>7: Stepper.state = 0
@@ -30,9 +30,9 @@ class Stepper:
       GPIO.output(Stepper.pins[pin], Stepper.sequence[Stepper.state][pin])
     self.delay_us(1000)
     
-  def __turnSteps(self,steps,dir):   
+  def turnSteps(self,steps,dir):   
     for step in range(steps):
-      self.__halfstep(dir)
+      self.halfstep(dir)
 
   # def goAngle(self, angle):
     # move to a specified angle
