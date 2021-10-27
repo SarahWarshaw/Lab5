@@ -1,3 +1,4 @@
+from PCF8591 import PCF8591
 from Stepper import Stepper
 import RPi.GPIO as GPIO
 import time
@@ -8,7 +9,6 @@ myStepper = Stepper(0x48)
 try:
   print('here')
   myStepper.__turnSteps(500,1)
-  print(myStepper)
-except:
-  pass
+except Exception as e: 
+  print(e)
 GPIO.cleanup()
