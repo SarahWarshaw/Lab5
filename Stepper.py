@@ -39,8 +39,18 @@ class Stepper:
   def goAngle(self, angle,dir):
     # move to a specified angle
     # 8 steps/half step*8 half steps/motor rev *64 motor rev/shaft revolution
+    # abs(curr-last)<180 --> CW otherwise CCW
     steps = int(angle/float(360/4096))
     self.turnSteps(steps,dir)
-  # def zero(self):
+  def zero(self):
     # turn the motor until the photores
+    # lower number means brighter, ambient light is higher value
+    photores = self.myPCF8591.read(0)
+    while photores < 150 
+      self.turnSteps(1,1)
+      print(photores) 
+    
+    
+
+
   
