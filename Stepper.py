@@ -5,15 +5,17 @@ import smbus
 
 class Stepper:
   pins = [18,21,22,23] # controller inputs: in1, in2, in3, in4
+  GPIO.setmode(GPIO.BCM)
   for pin in pins:
     GPIO.setup(pin, GPIO.OUT, initial=0)
   sequence = [ [1,0,0,0],[1,1,0,0],[0,1,0,0],[0,1,1,0],
         [0,0,1,0],[0,0,1,1],[0,0,0,1],[1,0,0,1] ]
 
   state = 0 #current position in stator sequence 
+  
   def __init__(self,address):
     self.myPCF8591 = PCF8591(address)
-  GPIO.setmode(GPIO.BCM)
+
 
   def delay_us(self,tus): # use microseconds to improve time resolution
     endTime = time.time() + float(tus)/ float(1E6)
