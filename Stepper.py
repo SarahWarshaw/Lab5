@@ -39,7 +39,7 @@ class Stepper:
   def goAngle(self, angle,dir):
     # move to a specified angle
     # 8 steps/half step*8 half steps/motor rev *64 motor rev/shaft revolution
-    steps = 4096/angle
+    steps = int(4096/angle)
     self.turnSteps(steps,dir)
   # def zero(self):
     # turn the motor until the photores
