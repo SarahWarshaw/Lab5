@@ -8,7 +8,8 @@ myStepper = Stepper(0x48)
 
 try:
   print('here')
-  myStepper.goAngle(360,1)
+  #myStepper.goAngle(360,1)
+  myStepper.zero()
 except Exception as e: 
   print(e)
 GPIO.cleanup()
