@@ -33,6 +33,8 @@ class Stepper:
   def turnSteps(self,steps,dir):   
     for step in range(steps):
       self.halfstep(dir)
+    angle = self.myPCF8591.read(0)
+    print(angle)
 
   # def goAngle(self, angle):
     # move to a specified angle
