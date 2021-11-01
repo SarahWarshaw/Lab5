@@ -16,8 +16,8 @@ try:
     with open('stepper_control.txt','r') as f:
       data = json.load(f)
 
-    angle = float(data['slider'])
-    selection = data['Buttons']
+      selection = data['Buttons']
+      angle = float(data['slider'])
 
     if selection == 'Zero Motor':
       myStepper.zero()
