@@ -16,7 +16,7 @@ try:
     with open('stepper_control.txt','r') as f:
       data = json.load(f)
 
-      selection = data['Buttons']
+      selection = str(data['Buttons'])
       angle = float(data['slider'])
       print(angle)
       print(selection)
