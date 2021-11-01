@@ -5,7 +5,9 @@ import json
 print("Content-type: text/html\n\n")
 data = cgi.FieldStorage()
 s1 = data.getvalue('slider')
-data = {"slider":s1}
+s2 = data.getValue('button')
+selection = data.getValue("submit")
+data = {"slider":s1, "button":s2,"chosen":selection}
 with open('stepper_control.txt','w') as f:
   json.dump(data,f)
 
@@ -21,9 +23,9 @@ print("""
 <br>
 <form action = "/cgi-bin/stepper_control.py" method = "POST">
   <input type ="range" name = "slider" min = "0" max="360" value="0"><br>
-  <input type="submit" value = "Submit angle"><br><br>
-  <input type = "hidden" name = "slider" value = "400">
-  <input type="submit" value = "Zero the motor">
+  <input type="submit" name="submit" value = "Submit angle"><br><br>
+  <input type = "hidden" name = "button" value = "400">
+  <input type="submit" name = "submit" value = "Zero the motor">
 </form>
 </div>
 </body>
