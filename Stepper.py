@@ -48,6 +48,7 @@ class Stepper:
   def zero(self):
     # turn on LED
     GPIO.output(Stepper.LEDpin, GPIO.HIGH)
+    self.delay_us(1000)
     # turn the motor until the photores
     # lower number means brighter, ambient light is higher value
     photores = self.myPCF8591.read(0)
