@@ -5,7 +5,7 @@ import json
 print("Content-type: text/html\n\n")
 data = cgi.FieldStorage()
 s1 = data.getvalue('slider')
-data = {"slider":s1}
+data = {'slider':s1}
 with open('stepper_control.txt','w') as f:
   json.dump(data,f)
 
