@@ -21,20 +21,13 @@ print("""
 <br>
 """)
 
-if s1 == str(13):
-  print('RED LED BRIGHTNESS = %s' %s2) 
-elif s1 ==str(19):
-  print('WHITE LED BRIGHTNESS = %s' %s2) 
-else:
-  print('BLUE LED BRIGHTNESS = %s' %s2) 
-
-
 print("""
 <form action = "/cgi-bin/stepper_control.py" method = "POST">
 """)
 print('<input type ="range" name = "slider" min = "0" max="360" value="%s"><br>' % s2)
 print("""
   <input type="submit" name = "Buttons" value = "Change Angle">
+  <input type="submit" name ="Buttons" value = "Zero Motor">
 </form>
 </div>
 </body>
