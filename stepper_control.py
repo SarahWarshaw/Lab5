@@ -17,6 +17,7 @@ print("""
 <body>
 <div style="width:600px;background:#71F282;border:1px;text-align:center">
 <br>
+<h1>Change Angle or Zero the Motor</h1>
 <font size="3" color = "black" face = "helvetica">
 <br>
 """)

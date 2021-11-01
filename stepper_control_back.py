@@ -18,12 +18,14 @@ try:
 
       selection = data['Buttons']
       angle = float(data['slider'])
+      print(angle)
+      print(selection)
 
     if selection == 'Zero Motor':
       myStepper.zero()
       #run zero code
     else:
-      myStepper.goAngle(30,dir)
+      myStepper.goAngle(angle,dir)
       # determine if CW or CCW based on previous angle/ whether the angle needed to turn is greater than 180
       #run angle code
     prevAng = angle
