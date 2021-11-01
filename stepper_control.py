@@ -30,7 +30,7 @@ else:
 
 
 print("""
-<form action = "/cgi-bin/led_brightness.py" method = "POST">
+<form action = "/cgi-bin/stepper_control.py" method = "POST">
   <input type = "radio" name = "LED" value = "13" checked> LED 1<br>
   <input type = "radio" name = "LED" value = "19"> LED 2<br>
   <input type = "radio" name = "LED" value = "26"> LED 3<br>
