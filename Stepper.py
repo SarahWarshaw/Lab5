@@ -44,12 +44,14 @@ class Stepper:
     # abs(curr-last)<180 --> CW otherwise CCW
     steps = int(angle/float(360/4096))
     self.turnSteps(steps,dir)
+
   def zero(self):
     # turn on LED
     GPIO.output(Stepper.LEDpin, GPIO.HIGH)
     # turn the motor until the photores
     # lower number means brighter, ambient light is higher value
     photores = self.myPCF8591.read(0)
+    print(photores)
     while photores < 140: 
       photores = self.myPCF8591.read(0)
       self.turnSteps(1,1)
