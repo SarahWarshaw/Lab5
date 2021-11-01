@@ -4,11 +4,11 @@ import json
 
 print("Content-type: text/html\n\n")
 data = cgi.FieldStorage()
-selection = data.getValue('two_buttons')
-data = {"two_buttons":selection}
-with open('stepper_control.txt','w') as f:
+s1 = data.getvalue('LED')
+s2 = data.getvalue('slider')
+data = {"LED":s1, "slider":s2}
+with open('led_brightness_multiple.txt','w') as f:
   json.dump(data,f)
-
 
 print("""
 <html>
@@ -17,13 +17,27 @@ print("""
 <body>
 <div style="width:600px;background:#71F282;border:1px;text-align:center">
 <br>
-<h1>Choose an angle or zero the motor</h1>
 <font size="3" color = "black" face = "helvetica">
 <br>
-<form action = "/cgi-bin/stepper_control.py" method = "POST">
-  <input type ="range" name = "slider" min = "0" max="360" value="0"><br>
-  <input type="submit" name="button" value = "Submit angle"><br><br>
-  <input type="submit" name = "button" value = "Zero the motor">
+""")
+
+if s1 == str(13):
+  print('RED LED BRIGHTNESS = %s' %s2) 
+elif s1 ==str(19):
+  print('WHITE LED BRIGHTNESS = %s' %s2) 
+else:
+  print('BLUE LED BRIGHTNESS = %s' %s2) 
+
+
+print("""
+<form action = "/cgi-bin/led_brightness.py" method = "POST">
+  <input type = "radio" name = "LED" value = "13" checked> LED 1<br>
+  <input type = "radio" name = "LED" value = "19"> LED 2<br>
+  <input type = "radio" name = "LED" value = "26"> LED 3<br>
+""")
+print('<input type ="range" name = "slider" min = "0" max="100" value="%s"><br>' % s2)
+print("""
+  <input type="submit" value = "Change LED brightness">
 </form>
 </div>
 </body>

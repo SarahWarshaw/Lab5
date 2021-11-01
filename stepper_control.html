@@ -1,14 +1,17 @@
 <html>
 <head>
-<title>Stepper Control</title>
+<title>LED brightness</title>
 </head>
 <body>
 <div style="width:600px;background:#71F282;border:1px;text-align:center">
 <br>
-<h1>Choose an angle or zero the motor</h1>
-<form action = "/cgi-bin/stepper_control.py" method = "POST">
-  <input type = "submit" name = "two_buttons" value="button 1">
-
+<h1>Choose LED and Desired Brightness</h1>
+<form action = "/cgi-bin/led_brightness.py" method = "POST">
+  <input type = "radio" name = "LED" value = "13" checked> LED 1<br>
+  <input type = "radio" name = "LED" value = "19"> LED 2<br>
+  <input type = "radio" name = "LED" value = "26"> LED 3<br>
+  <input type ="range" name = "slider" min = "0" max="100" value="0"><br>
+  <input type="submit" value = "Change LED brightness">
 </form>
 </div>
 </body>
