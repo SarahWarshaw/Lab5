@@ -4,10 +4,10 @@ import json
 
 print("Content-type: text/html\n\n")
 data = cgi.FieldStorage()
-s1 = data.getvalue('LED')
-s2 = data.getvalue('slider')
-data = {"LED":s1, "slider":s2}
-with open('led_brightness_multiple.txt','w') as f:
+s1 = data.getvalue('slider')
+s2 = data.getvalue('Buttons')
+data = {"slider":s1, "Buttons":s2}
+with open('stepper_control.txt','w') as f:
   json.dump(data,f)
 
 print("""
@@ -31,13 +31,10 @@ else:
 
 print("""
 <form action = "/cgi-bin/stepper_control.py" method = "POST">
-  <input type = "radio" name = "LED" value = "13" checked> LED 1<br>
-  <input type = "radio" name = "LED" value = "19"> LED 2<br>
-  <input type = "radio" name = "LED" value = "26"> LED 3<br>
 """)
-print('<input type ="range" name = "slider" min = "0" max="100" value="%s"><br>' % s2)
+print('<input type ="range" name = "slider" min = "0" max="360" value="%s"><br>' % s2)
 print("""
-  <input type="submit" value = "Change LED brightness">
+  <input type="submit" name = "Buttons" value = "Change Angle">
 </form>
 </div>
 </body>

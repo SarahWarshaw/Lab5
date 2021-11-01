@@ -5,13 +5,10 @@
 <body>
 <div style="width:600px;background:#71F282;border:1px;text-align:center">
 <br>
-<h1>Choose LED and Desired Brightness</h1>
+<h1>Change Angle or Zero the Motor</h1>
 <form action = "/cgi-bin/stepper_control.py" method = "POST">
-  <input type = "radio" name = "LED" value = "13" checked> LED 1<br>
-  <input type = "radio" name = "LED" value = "19"> LED 2<br>
-  <input type = "radio" name = "LED" value = "26"> LED 3<br>
-  <input type ="range" name = "slider" min = "0" max="100" value="0"><br>
-  <input type="submit" value = "Change LED brightness">
+  <input type ="range" name = "slider" min = "0" max="360" value="0"><br>
+  <input type="submit" name ="Buttons" value = "Change Angle">
 </form>
 </div>
 </body>
