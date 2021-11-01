@@ -5,6 +5,7 @@ import smbus
 
 class Stepper:
   pins = [18,21,22,23] # controller inputs: in1, in2, in3, in4
+  LEDpin = 25
   sequence = [ [1,0,0,0],[1,1,0,0],[0,1,0,0],[0,1,1,0],
         [0,0,1,0],[0,0,1,1],[0,0,0,1],[1,0,0,1] ]
 
@@ -14,6 +15,7 @@ class Stepper:
     self.myPCF8591 = PCF8591(address)
     for pin in Stepper.pins:
       GPIO.setup(pin, GPIO.OUT, initial=0)
+    GPIO.setup(Stepper.LEDpin, GPIO.OUT, initial=0)
 
 
   def delay_us(self,tus): # use microseconds to improve time resolution
@@ -43,6 +45,8 @@ class Stepper:
     steps = int(angle/float(360/4096))
     self.turnSteps(steps,dir)
   def zero(self):
+    # turn on LED
+    GPIO.output(Stepper.LEDpin, GPIO.HIGH)
     # turn the motor until the photores
     # lower number means brighter, ambient light is higher value
     photores = self.myPCF8591.read(0)
@@ -51,6 +55,8 @@ class Stepper:
       self.turnSteps(1,1)
       self.delay_us(100)
       print(photores) 
+    # turn off LED
+    GPIO.output(Stepper.LEDpin, GPIO.LOW)
     
     
 
