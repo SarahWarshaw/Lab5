@@ -16,16 +16,17 @@ try:
     with open('stepper_control.txt','r') as f:
       data = json.load(f)
 
-    value = float(data['slider'])
+    angle = float(data['slider'])
+    selection = data['Buttons']
 
-    if value == 400:
+    if selection == 'Zero Motor':
       myStepper.zero()
       #run zero code
     else:
-      myStepper.goAngle(abs(value-prevAng),dir)
+      myStepper.goAngle(abs(angle-prevAng),dir)
       # determine if CW or CCW based on previous angle/ whether the angle needed to turn is greater than 180
       #run angle code
-    prevAng = value
+    prevAng = angle
     with open('stepper_control.txt','w') as f:
       data = {"slider":0}
       json.dump(data,f)
