@@ -23,12 +23,12 @@ try:
       myStepper.zero()
       #run zero code
     else:
-      myStepper.goAngle(abs(angle-prevAng),dir)
+      myStepper.goAngle(30,dir)
       # determine if CW or CCW based on previous angle/ whether the angle needed to turn is greater than 180
       #run angle code
     prevAng = angle
     with open('stepper_control.txt','w') as f:
-      data = {"slider":0}
+      data = {"slider":0,"Buttons": "Change Angle"}
       json.dump(data,f)
       
 
