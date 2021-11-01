@@ -18,8 +18,7 @@ try:
 
       selection = str(data['Buttons'])
       angle = float(data['slider'])
-      print(angle)
-      print(selection)
+
 
     if selection == 'Zero Motor':
       myStepper.zero()
@@ -35,5 +34,7 @@ try:
       
 
 except Exception as e: 
+  print(angle)
+  print(selection)
   print(e)
 GPIO.cleanup()
