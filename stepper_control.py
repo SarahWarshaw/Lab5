@@ -23,7 +23,7 @@ print("""
 <h1>Choose an angle or zero the motor</h1>
 <font size="3" color = "black" face = "helvetica">
 <br>
-<form action = "/usr/lib/cgi-bin/stepper_control.py" method = "POST">
+<form action = "stepper_control.py" method = "POST">
   <input type ="range" name = "slider" min = "0" max="360" value="0"><br>
   <input type="submit" name="button" value = "Submit angle"><br><br>
   <input type="submit" name = "button" value = "Zero the motor">
