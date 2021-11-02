@@ -7,7 +7,7 @@ import json
 
 # Infinite loop reading data from file saved by cgi code
 while True:
-  with open('stepper_control','r') as f:
+  with open('stepper_control.txt','r') as f:
     data = json.load(f)
 
 # duty cycle (1-100) is the value of 'slider' and ledPin(13,19, or 26) is the value of 'LED'
