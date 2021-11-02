@@ -13,9 +13,6 @@ class Stepper:
   
   def __init__(self,address):
     self.myPCF8591 = PCF8591(address)
-    for pin in Stepper.pins:
-      GPIO.setup(pin, GPIO.OUT, initial=0)
-    GPIO.setup(Stepper.LEDpin, GPIO.OUT, initial=0)
 
 
   def delay_us(self,tus): # use microseconds to improve time resolution

@@ -9,6 +9,8 @@ import json
 GPIO.setmode(GPIO.BCM)
 
 myStepper = Stepper(0x48)
+for pin in Stepper.pins:
+    GPIO.setup(pin,GPIO.OUT, initial=0)
 # Infinite loop reading data from file saved by cgi code
 prevAng = 0
 while True:
