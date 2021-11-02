@@ -1,12 +1,8 @@
 #!/usr/bin/python3
 
-from PCF8591 import PCF8591
 from Stepper import Stepper
-import RPi.GPIO as GPIO
 import time
 import json
-
-GPIO.setmode(GPIO.BCM)
 
 myStepper = Stepper(0x48)
 # Infinite loop reading data from file saved by cgi code
@@ -30,4 +26,3 @@ while True:
   #with open('stepper_control.txt','w') as f:
     #data = {"slider":0,"Buttons": "Change Angle"}
     #json.dump(data,f)
-  GPIO.cleanup()
