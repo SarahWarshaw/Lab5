@@ -27,8 +27,8 @@ while True:
     # determine if CW or CCW based on previous angle/ whether the angle needed to turn is greater than 180
     #run angle code
   #prevAng = angle
-  with open('stepper_control.txt','w') as f:
-    data = {"slider":0,"Buttons": "Change Angle"}
-    json.dump(data,f)
+  #with open('stepper_control.txt','w') as f:
+    #data = {"slider":0,"Buttons": "Change Angle"}
+    #json.dump(data,f)
 
-  GPIO.cleanup()
+  #GPIO.cleanup()
