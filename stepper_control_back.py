@@ -18,14 +18,16 @@ while True:
 # duty cycle (1-100) is the value of 'slider' and ledPin(13,19, or 26) is the value of 'LED'
   angle = int(data['slider'])
   selection = data['Buttons']
-
+  time.delay(1000)
   if selection == 'Zero Motor':
     myStepper.zero()
     #run zero code
     angle = 0
+    time.delay(1000)
     with open('/usr/lib/cgi-bin/stepper_control.txt','w') as f:
       data = {"slider":0,"Buttons": "Change Angle"}
       json.dump(data,f)
+    time.delay(1000)
 
   else:
     if ((angle - prevAng) > 0):
