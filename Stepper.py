@@ -4,7 +4,6 @@ import time
 import smbus
 
 class Stepper:
-  GPIO.setmode(GPIO.BCM)
   pins = [18,21,22,23] # controller inputs: in1, in2, in3, in4
   LEDpin = 25
   sequence = [ [1,0,0,0],[1,1,0,0],[0,1,0,0],[0,1,1,0],
