@@ -1,14 +1,14 @@
 #!/usr/bin/python3
 
-from PCF8591 import PCF8591
-from Stepper import Stepper
-import RPi.GPIO as GPIO
-import time
+#from PCF8591 import PCF8591
+#from Stepper import Stepper
+#import RPi.GPIO as GPIO
+#import time
 import json
 
-GPIO.setmode(GPIO.BCM)
+#GPIO.setmode(GPIO.BCM)
 
-myStepper = Stepper(0x48)
+# myStepper = Stepper(0x48)
 # Infinite loop reading data from file saved by cgi code
 prevAng = 0
 while True:
@@ -16,7 +16,6 @@ while True:
     data = json.load(f)
   # selection = data['Buttons']
   #angle = int(data['slider'])
-  print(data)
 
 
   #if selection == 'Zero Motor':
