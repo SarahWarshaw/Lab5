@@ -1,6 +1,11 @@
 #!/usr/bin/python37all
 import cgi
 import json
+from urllib.request import urlopen
+from urllib.parse import urlencode
+import random, time
+
+api = "3UQYF5FIM794CZYD"   # Enter your API key
 
 print("Content-type: text/html\n\n")
 data = cgi.FieldStorage()
@@ -9,6 +14,11 @@ s2 = data.getvalue('Buttons')
 data = {'slider':s1, 'Buttons':s2}
 with open('stepper_control.txt','w') as f:
   json.dump(data,f)
+
+params = {
+    "api_key":api,
+    1: s1}
+params = urlencode(params)   # put dict data into a GET string
 
 print("""
 <html>
@@ -25,7 +35,7 @@ print("""
 print("""
 <form action = "/cgi-bin/stepper_control.py" method = "POST">
 """)
-print('<input type ="range" name = "slider" min = "0" max="360" value="%s"><br>' % s2)
+print('<input type ="range" name = "slider" min = "0" max="360" value="0"><br>')
 print("""
   <input type="submit" name = "Buttons" value = "Change Angle">
   <input type="submit" name ="Buttons" value = "Zero Motor">
@@ -34,3 +44,13 @@ print("""
 </body>
 </html>
 """)
+
+# add "?" to URL and append with parameters in GET string:
+url = "https://api.thingspeak.com/update?" + params
+try:
+    response = urlopen(url)      # open the URL to send the request
+    print(response.status, response.reason)  # display the response
+    print(response.read()) # display response page data
+    time.sleep(16)    # 15 sec minimum
+except Exception as e:
+    print(e)
