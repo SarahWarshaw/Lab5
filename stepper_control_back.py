@@ -1,21 +1,26 @@
 #!/usr/bin/python3
 
-import RPi.GPIO as gpio
+from Stepper import Stepper
+import RPi.GPIO as GPIO
 import time
 import json
 
 
+GPIO.setmode(GPIO.BCM)
+
+myStepper = Stepper(0x48)
 # Infinite loop reading data from file saved by cgi code
 while True:
   with open('stepper_control.txt','r') as f:
     data = json.load(f)
 
 # duty cycle (1-100) is the value of 'slider' and ledPin(13,19, or 26) is the value of 'LED'
-  print(data)
   angle = int(data['slider'])
-  print(angle)
   selection = data['Buttons']
-  print(selection)
+
+  if selection == 'Zero Motor':
+    myStepper.zero()
+    #run zero code
 
 #from PCF8591 import PCF8591
 #from Stepper import Stepper
