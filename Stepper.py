@@ -53,7 +53,7 @@ class Stepper:
     # lower number means brighter, ambient light is higher value
     photores = self.myPCF8591.read(0)
     print(photores)
-    while photores < 150: 
+    while photores < 180: 
       photores = self.myPCF8591.read(0)
       self.turnSteps(1,1)
       self.delay_us(100)
