@@ -50,4 +50,4 @@ while True:
     data = {"slider":0,"Buttons": "Change Angle"}
     json.dump(data,f)
 
-  GPIO.cleanup()
+GPIO.cleanup()
