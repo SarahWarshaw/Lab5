@@ -10,6 +10,7 @@ GPIO.setmode(GPIO.BCM)
 
 myStepper = Stepper(0x48)
 # Infinite loop reading data from file saved by cgi code
+prevAng = 0
 while True:
   with open('stepper_control.txt','r') as f:
     data = json.load(f)
@@ -22,44 +23,25 @@ while True:
     myStepper.zero()
     #run zero code
   else:
-    dir = 1
-    myStepper.goAngle(angle,dir)
+    if ((angle - prevAng) > 0):
+      if ((angle - prevAng) <180):
+        dir = 1
+        degrees = angle-prevAng
+      else:
+        dir = -1
+        degrees = (360 - angle) + prevAng
+    elif ((angle - prevAng)<0):
+      if (abs((angle - prevAng)) < 180):
+        dir = -1
+        degrees = abs(angle-prevAng)
+      else:
+        dir = 1
+        degrees = (360 - prevAng) + angle 
+
+    myStepper.goAngle(degrees,dir)
   prevAng = angle
-  with open('stepper_control.txt','w') as f:
-    data = {"slider":0,"Buttons": "Change Angle"}
-    json.dump(data,f)
-
-#from PCF8591 import PCF8591
-#from Stepper import Stepper
-#import RPi.GPIO as GPIO
-#import time
-'''
-import json
-
-#GPIO.setmode(GPIO.BCM)
-
-# myStepper = Stepper(0x48)
-# Infinite loop reading data from file saved by cgi code
-prevAng = 0
-#while True:
-with open('stepper_control.txt','r') as f:
-   data = json.load(f)
-print(data)
-  # selection = data['Buttons']
-  #angle = int(data['slider'])
-
-
-  #if selection == 'Zero Motor':
-    #myStepper.zero()
-    #run zero code
-  #else:
-  #  myStepper.goAngle(angle,dir)
-    # determine if CW or CCW based on previous angle/ whether the angle needed to turn is greater than 180
-    #run angle code
-  #prevAng = angle
   #with open('stepper_control.txt','w') as f:
     #data = {"slider":0,"Buttons": "Change Angle"}
     #json.dump(data,f)
 
-  #GPIO.cleanup()
-'''
+  GPIO.cleanup()
