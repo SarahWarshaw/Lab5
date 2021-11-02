@@ -21,6 +21,13 @@ while True:
   if selection == 'Zero Motor':
     myStepper.zero()
     #run zero code
+  else:
+    dir = 1
+    myStepper.goAngle(angle,dir)
+  prevAng = angle
+  with open('stepper_control.txt','w') as f:
+    data = {"slider":0,"Buttons": "Change Angle"}
+    json.dump(data,f)
 
 #from PCF8591 import PCF8591
 #from Stepper import Stepper
