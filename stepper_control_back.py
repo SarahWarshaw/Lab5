@@ -17,17 +17,16 @@ try:
       data = json.load(f)
 
 # duty cycle (1-100) is the value of 'slider' and ledPin(13,19, or 26) is the value of 'LED'
-    print(data)
-    selection = data['Buttons']
+    # selection = data['Buttons']
     angle = int(data['slider'])
       
 
 
-    if selection == 'Zero Motor':
-      myStepper.zero()
+    #if selection == 'Zero Motor':
+      #myStepper.zero()
       #run zero code
-    else:
-      myStepper.goAngle(angle,dir)
+    #else:
+    #  myStepper.goAngle(angle,dir)
       # determine if CW or CCW based on previous angle/ whether the angle needed to turn is greater than 180
       #run angle code
     prevAng = angle
@@ -38,6 +37,5 @@ try:
 
 except Exception as e: 
   print(angle)
-  print(selection)
   print(e)
 GPIO.cleanup()
