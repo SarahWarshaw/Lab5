@@ -15,8 +15,6 @@ while True:
   GPIO.setmode(GPIO.BCM)
   for pin in Stepper.pins:
     GPIO.setup(pin,GPIO.OUT, initial=0)
-  print(open('/usr/lib/cgi-bin/stepper_control.txt','r'))
-'''
   with open('/usr/lib/cgi-bin/stepper_control.txt','r') as f:
     data = json.load(f)
 
@@ -53,4 +51,3 @@ while True:
     json.dump(data,f)
 
   GPIO.cleanup()
-'''
