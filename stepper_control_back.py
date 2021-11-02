@@ -37,6 +37,9 @@ while True:
       else:
         dir = 1
         degrees = (360 - prevAng) + angle 
+    else:
+      dir = 1
+      degrees = 0
 
     myStepper.goAngle(degrees,dir)
   prevAng = angle
