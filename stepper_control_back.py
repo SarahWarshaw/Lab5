@@ -40,8 +40,8 @@ while True:
 
     myStepper.goAngle(degrees,dir)
   prevAng = angle
-  #with open('stepper_control.txt','w') as f:
-    #data = {"slider":0,"Buttons": "Change Angle"}
-    #json.dump(data,f)
+  with open('stepper_control.txt','w') as f:
+    data = {"slider":0,"Buttons": "Change Angle"}
+    json.dump(data,f)
 
-  GPIO.cleanup()
+GPIO.cleanup()
