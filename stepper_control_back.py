@@ -17,6 +17,7 @@ try:
       data = json.load(f)
 
 # duty cycle (1-100) is the value of 'slider' and ledPin(13,19, or 26) is the value of 'LED'
+    print(data)
     selection = data['Buttons']
     angle = int(data['slider'])
       
