@@ -12,7 +12,7 @@ myStepper = Stepper(0x48)
 # Infinite loop reading data from file saved by cgi code
 prevAng = 0
 while True:
-  with open('stepper_control.txt','r') as f:
+  with open('/usr/lib/cgi-bin/stepper_control.txt','r') as f:
     data = json.load(f)
 
 # duty cycle (1-100) is the value of 'slider' and ledPin(13,19, or 26) is the value of 'LED'
@@ -43,7 +43,7 @@ while True:
 
     myStepper.goAngle(degrees,dir)
   prevAng = angle
-  with open('stepper_control.txt','w') as f:
+  with open('/usr/lib/cgi-bin/stepper_control.txt','w') as f:
     data = {"slider":0,"Buttons": "Change Angle"}
     json.dump(data,f)
 
