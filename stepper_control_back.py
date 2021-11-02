@@ -5,16 +5,12 @@ import RPi.GPIO as GPIO
 import time
 import json
 
-
-
+GPIO.setmode(GPIO.BCM)
 
 myStepper = Stepper(0x48)
 # Infinite loop reading data from file saved by cgi code
 prevAng = 0
 while True:
-  GPIO.setmode(GPIO.BCM)
-  for pin in Stepper.pins:
-    GPIO.setup(pin,GPIO.OUT, initial=0)
   with open('/usr/lib/cgi-bin/stepper_control.txt','r') as f:
     data = json.load(f)
 
@@ -50,4 +46,4 @@ while True:
     data = {"slider":0,"Buttons": "Change Angle"}
     json.dump(data,f)
 
-GPIO.cleanup()
+  GPIO.cleanup()
