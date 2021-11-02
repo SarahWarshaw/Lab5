@@ -22,6 +22,9 @@ while True:
   if selection == 'Zero Motor':
     myStepper.zero()
     #run zero code
+    with open('/usr/lib/cgi-bin/stepper_control.txt','w') as f:
+      data = {"slider":0,"Buttons": "Change Angle"}
+    json.dump(data,f)
   else:
     if ((angle - prevAng) > 0):
       if ((angle - prevAng) <180):
@@ -43,8 +46,5 @@ while True:
 
     myStepper.goAngle(degrees,dir)
   prevAng = angle
-  with open('/usr/lib/cgi-bin/stepper_control.txt','w') as f:
-    data = {"slider":0,"Buttons": "Change Angle"}
-    json.dump(data,f)
 
 GPIO.cleanup()
