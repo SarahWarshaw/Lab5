@@ -5,6 +5,7 @@ import RPi.GPIO as GPIO
 import time
 import json
 
+
 GPIO.setmode(GPIO.BCM)
 
 myStepper = Stepper(0x48)
