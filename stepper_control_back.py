@@ -14,6 +14,8 @@ while True:
   print(data)
   angle = int(data['slider'])
   print(angle)
+  selection = data['Buttons']
+  print(selection)
 
 #from PCF8591 import PCF8591
 #from Stepper import Stepper
