@@ -12,6 +12,8 @@ while True:
 
 # duty cycle (1-100) is the value of 'slider' and ledPin(13,19, or 26) is the value of 'LED'
   print(data)
+  angle = int(data['slider'])
+  print(angle)
 
 #from PCF8591 import PCF8591
 #from Stepper import Stepper
