@@ -21,9 +21,9 @@ while True:
     myStepper.zero()
     #run zero code
     angle = 0
-    with open('/usr/lib/cgi-bin/stepper_control.txt','w') as f:
-      data = {'slider':'0','Buttons': 'Change Angle'}
-      json.dump(data,f)
+    #with open('/usr/lib/cgi-bin/stepper_control.txt','w') as f:
+      #data = {'slider':'0','Buttons':'Change Angle'}
+      #json.dump(data,f)
 
   else:
     if ((angle - prevAng) > 0):
