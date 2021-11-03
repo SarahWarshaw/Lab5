@@ -60,6 +60,7 @@ while True:
           json.dump(data,f)
     else:
       print("hello")
+    time.sleep(2)
   except Exception as e:
     print(e)
 
