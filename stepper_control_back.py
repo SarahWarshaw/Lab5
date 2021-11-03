@@ -12,7 +12,7 @@ myStepper = Stepper(0x48)
 # Infinite loop reading data from file saved by cgi code
 prevAng = 0
 while True:
-  with open("/usr/lib/cgi-bin/stepper_control.txt","r") as f:
+  with open('/usr/lib/cgi-bin/stepper_control.txt','r') as f:
     data = json.load(f)
     print(data)
 
