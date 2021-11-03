@@ -12,21 +12,23 @@ myStepper = Stepper(0x48)
 # Infinite loop reading data from file saved by cgi code
 prevAng = 0
 while True:
-  with open("/usr/lib/cgi-bin/stepper_control.txt",encoding = "utf-8") as f:
+  with open("/usr/lib/cgi-bin/stepper_control.txt","r") as f:
     data = json.load(f)
     print(data)
 
-  angle = int(data['slider'])
-  selection = data['Buttons']
-  if selection == 'Zero Motor':
+  angle = int(data["slider"])
+  selection = data["Buttons"]
+  if selection == "Zero Motor":
+    print('zero')
     myStepper.zero()
     #run zero code
     angle = 0
     with open('/usr/lib/cgi-bin/stepper_control.txt','w') as f:
-      data = {'slider':'0','Buttons':'Change Angle'}
+      data = {"slider":"0","Buttons":"Change Angle"}
       json.dump(data,f)
 
   elif selection =="Change Angle":
+    print('angle')
     if ((angle - prevAng) > 0):
       if ((angle - prevAng) <180):
         dir = 1
