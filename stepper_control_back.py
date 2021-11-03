@@ -17,7 +17,7 @@ while True:
     print(data)
 
   angle = int(data["slider"])
-  selection = data.keys()[1]
+  selection = data["Buttons"]
   if selection == "Zero Motor":
     print('zero')
     myStepper.zero()

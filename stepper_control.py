@@ -10,7 +10,7 @@ api = "3UQYF5FIM794CZYD"   # Enter your API key
 print("Content-type: text/html\n\n")
 data = cgi.FieldStorage()
 s1 = data.getvalue('slider')
-s2 = data.keys()[1]
+s2 = data.getvalue('Buttons')
 data = {'slider':s1, 'Buttons':s2}
 with open('stepper_control.txt','w') as f:
   json.dump(data,f)
@@ -32,8 +32,8 @@ print("""
 <br>
 <form action = "/cgi-bin/stepper_control.py" method = "POST">
   <input type ="range" name = "slider" min = "0" max="360" value="0"><br>
-  <input type="submit" name = "Button1" value = "Change Angle">
-  <input type="submit" name ="Button2" value = "Zero Motor">
+  <input type="submit" name = "Buttons" value = "Change Angle">
+  <input type="submit" name ="Buttons" value = "Zero Motor">
 </form>
 <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1539962/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
 <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1539962/widgets/375536"></iframe>
