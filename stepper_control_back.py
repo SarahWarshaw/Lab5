@@ -14,6 +14,7 @@ prevAng = 0
 while True:
   with open('/usr/lib/cgi-bin/stepper_control.txt','r') as f:
     data = json.load(f)
+    print(data)
 
   angle = int(data['slider'])
   selection = data['Buttons']
@@ -21,9 +22,9 @@ while True:
     myStepper.zero()
     #run zero code
     angle = 0
-    #with open('/usr/lib/cgi-bin/stepper_control.txt','w') as f:
-      #data = {'slider':'0','Buttons':'Change Angle'}
-      #json.dump(data,f)
+    with open('/usr/lib/cgi-bin/stepper_control.txt','w') as f:
+      data = {'slider':'0','Buttons':'Change Angle'}
+      json.dump(data,f)
 
   else:
     if ((angle - prevAng) > 0):
