@@ -13,9 +13,6 @@ class Stepper:
   
   def __init__(self,address):
     self.myPCF8591 = PCF8591(address)
-    for pin in Stepper.pins:
-      GPIO.setup(pin, GPIO.OUT, initial=0)
-    GPIO.setup(Stepper.LEDpin, GPIO.OUT, initial=0)
 
 
   def delay_us(self,tus): # use microseconds to improve time resolution
@@ -39,6 +36,9 @@ class Stepper:
     print(angle)
 
   def goAngle(self, angle,dir):
+    for pin in Stepper.pins:
+      GPIO.setup(pin, GPIO.OUT, initial=0)
+    GPIO.setup(Stepper.LEDpin, GPIO.OUT, initial=0)
     # move to a specified angle
     # 8 steps/half step*8 half steps/motor rev *64 motor rev/shaft revolution
     # abs(curr-last)<180 --> CW otherwise CCW
@@ -46,6 +46,9 @@ class Stepper:
     self.turnSteps(steps,dir)
 
   def zero(self):
+    for pin in Stepper.pins:
+      GPIO.setup(pin, GPIO.OUT, initial=0)
+    GPIO.setup(Stepper.LEDpin, GPIO.OUT, initial=0)
     # turn on LED
     GPIO.output(Stepper.LEDpin, GPIO.HIGH)
     self.delay_us(1000)
