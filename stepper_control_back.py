@@ -18,36 +18,41 @@ while True:
 
   angle = int(data["slider"])
   selection = data["Buttons"]
-  if selection == "Zero Motor":
-    print('zero')
-    myStepper.zero()
-    #run zero code
-    angle = 0
-    with open('/usr/lib/cgi-bin/stepper_control.txt','w') as f:
-      data = {"slider":"0","Buttons":"Change Angle"}
-      json.dump(data,f)
+  if selection !="Done":
 
-  elif selection =="Change Angle":
-    print('angle')
-    if ((angle - prevAng) > 0):
-      if ((angle - prevAng) <180):
-        dir = 1
-        degrees = angle-prevAng
-      else:
-        dir = -1
-        degrees = (360 - angle) + prevAng
-    elif ((angle - prevAng)<0):
-      if (abs((angle - prevAng)) < 180):
-        dir = -1
-        degrees = abs(angle-prevAng)
-      else:
-        dir = 1
-        degrees = (360 - prevAng) + angle 
-    else:
-      dir = 1
-      degrees = 0
+    if selection == "Zero Motor":
+      print('zero')
+      myStepper.zero()
+      #run zero code
+      angle = 0
+      with open('/usr/lib/cgi-bin/stepper_control.txt','w') as f:
+        data = {"slider":"0","Buttons":"Done"}
+        json.dump(data,f)
 
-    myStepper.goAngle(degrees,dir)
-  prevAng = angle
+    elif selection =="Change Angle":
+      print('angle')
+      if ((angle - prevAng) > 0):
+        if ((angle - prevAng) <180):
+          dir = 1
+          degrees = angle-prevAng
+        else:
+          dir = -1
+          degrees = (360 - angle) + prevAng
+      elif ((angle - prevAng)<0):
+        if (abs((angle - prevAng)) < 180):
+          dir = -1
+          degrees = abs(angle-prevAng)
+        else:
+          dir = 1
+          degrees = (360 - prevAng) + angle 
+      else:
+        dir = 1
+        degrees = 0
+
+      myStepper.goAngle(degrees,dir)
+      with open('/usr/lib/cgi-bin/stepper_control.txt','w') as f:
+        data = {"slider":"0","Buttons":"Done"}
+        json.dump(data,f)
+    prevAng = angle
 
 GPIO.cleanup()
