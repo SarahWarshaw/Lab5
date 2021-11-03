@@ -28,6 +28,7 @@ while True:
       #run zero code
       angle = 0
       data = {"slider":"0","Buttons":"Done"}
+      prevAng = angle
       with open("/usr/lib/cgi-bin/stepper_control.txt",'w') as f:
         json.dump(data,f)
 
@@ -53,8 +54,8 @@ while True:
 
       myStepper.goAngle(degrees,dir)
       data = {"slider":"0","Buttons":"Done"}
+      prevAng = angle
       with open("/usr/lib/cgi-bin/stepper_control.txt",'w') as f:
         json.dump(data,f)
-    prevAng = angle
 
 GPIO.cleanup()
