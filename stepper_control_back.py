@@ -23,10 +23,10 @@ while True:
     #run zero code
     angle = 0
     with open('/usr/lib/cgi-bin/stepper_control.txt','w') as f:
-      data = {'slider':'0','Buttons':'Zero Motor'}
+      data = {'slider':'0','Buttons':'Change Angle'}
       json.dump(data,f)
 
-  else:
+  elif selection =="Change Angle":
     if ((angle - prevAng) > 0):
       if ((angle - prevAng) <180):
         dir = 1
