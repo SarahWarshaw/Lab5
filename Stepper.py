@@ -35,6 +35,8 @@ class Stepper:
   def turnSteps(self,steps,dir):   
     for step in range(steps):
       self.halfstep(dir)
+    angle = self.myPCF8591.read(0)
+    print(angle)
 
   def goAngle(self, angle,dir):
     # move to a specified angle
@@ -50,10 +52,12 @@ class Stepper:
     # turn the motor until the photores
     # lower number means brighter, ambient light is higher value
     photores = self.myPCF8591.read(0)
+    print(photores)
     while photores < 150: 
       photores = self.myPCF8591.read(0)
       self.turnSteps(1,1)
-      self.delay_us(100) 
+      self.delay_us(100)
+      print(photores) 
     # turn off LED
     GPIO.output(Stepper.LEDpin, GPIO.LOW)
     
