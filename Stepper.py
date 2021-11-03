@@ -35,8 +35,6 @@ class Stepper:
   def turnSteps(self,steps,dir):   
     for step in range(steps):
       self.halfstep(dir)
-    angle = self.myPCF8591.read(0)
-    print(angle)
 
   def goAngle(self, angle,dir):
     # move to a specified angle
@@ -53,7 +51,7 @@ class Stepper:
     # lower number means brighter, ambient light is higher value
     photores = self.myPCF8591.read(0)
     print(photores)
-    while photores < 230: 
+    while photores < 240: 
       photores = self.myPCF8591.read(0)
       self.turnSteps(1,1)
       self.delay_us(100)
