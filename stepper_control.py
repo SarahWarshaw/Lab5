@@ -30,13 +30,8 @@ print("""
 <h1>Change Angle or Zero the Motor</h1>
 <font size="3" color = "black" face = "helvetica">
 <br>
-""")
-
-print("""
 <form action = "/cgi-bin/stepper_control.py" method = "POST">
-""")
-print('<input type ="range" name = "slider" min = "0" max="360" value="0"><br>')
-print("""
+  <input type ="range" name = "slider" min = "0" max="360" value="0"><br>
   <input type="submit" name = "Buttons" value = "Change Angle">
   <input type="submit" name ="Buttons" value = "Zero Motor">
 </form>
