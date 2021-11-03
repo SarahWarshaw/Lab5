@@ -34,7 +34,7 @@ while True:
         dir = -1
         degrees = (360 - angle) + prevAng
     elif ((angle - prevAng)<0):
-      if (abs((angle - prevAng)) < 180):
+      if (abs((angle - prevAng)) < 250):
         dir = -1
         degrees = abs(angle-prevAng)
       else:
